@@ -10,7 +10,7 @@ public class NormController {
 	   return "My first one";
    }
   @RequestMapping("/hello")
-  public string hello(){
+  public String hello(){
 	   return "Hello";
   }
 }
