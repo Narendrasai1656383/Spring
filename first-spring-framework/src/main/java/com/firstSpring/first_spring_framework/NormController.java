@@ -9,4 +9,8 @@ public class NormController {
    public String method() {
 	   return "My first one";
    }
+  @RequestMapping("/hello")
+  public string hello(){
+	   return "Hello";
+  }
 }
