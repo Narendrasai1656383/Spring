@@ -14,4 +14,14 @@ public class NormService {
 	public Product getById(int cid) {
 		return l.stream().filter(li -> li.getId()==cid).findFirst().get();
 	}
+	public void edit(Product product) {
+		Product p=l.stream().filter(li -> li.getId()==product.getId()).findFirst().get();
+		p.setId(product.getId());
+		p.setName(product.getName());
+		p.setPrice(product.getPrice());
+	}
+	public void delete(int cid) {
+		Product p=l.stream().filter(li -> li.getId()==cid).findFirst().get();
+		l.remove(p);
+	}
 }
