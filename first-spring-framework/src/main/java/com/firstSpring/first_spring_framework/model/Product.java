@@ -1,9 +1,14 @@
-package com.firstSpring.first_spring_framework;
+package com.firstSpring.first_spring_framework.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 @Component
+@Entity
 public class Product {
+	@Id
 	private int id;
 	private String name;
 	private int price;
