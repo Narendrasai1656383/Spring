@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.firstSpring.first_spring_framework.model.Product;
+import com.firstSpring.first_spring_framework.entity.Product;
 import com.firstSpring.first_spring_framework.service.NormService;
 
 @RestController
