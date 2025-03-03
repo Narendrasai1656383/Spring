@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body style="text-align:center">
- <h1>Your details are :</h1>
- <h3>First Name: ${firstname}</h3>
- <h3>Last Name: ${lastname}</h3>
- <h3>Email : ${email}</h3>
+ <h1>Customers added successfully</h1>
+    <h4>First Name : ${customer.firstname}</h4>
+    <h4>Last Name : ${customer.lastname}</h4>
+    <h4>Email : ${customer.email}</h4>
 </body>
 </html>
