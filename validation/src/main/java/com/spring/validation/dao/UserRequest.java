@@ -1,19 +1,16 @@
 package com.spring.validation.dao;
 
-import lombok.AllArgsConstructor;
+import org.hibernate.annotations.processing.Pattern;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserRequest {
-	private String name;
-	private String email;
-	private String mobile;
-	private String gender;
-	private int age;
-	private String nationality;
 	public String getName() {
 		return name;
 	}
@@ -50,4 +47,17 @@ public class UserRequest {
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
+	@NotNull(message="username shouldn't be bull")
+	private String name;
+	@Email(message="Invalid email address")
+	private String email;
+	@NotNull
+	@jakarta.validation.constraints.Pattern(regexp="^\\d{10}$",message="Invalid Mobile number")
+	private String mobile;
+	private String gender;
+	@Min(18)
+	@Max(60)
+	private int age;
+	@NotBlank
+	private String nationality;
 }

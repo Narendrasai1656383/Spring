@@ -17,13 +17,15 @@ import com.spring.validation.dao.UserRequest;
 import com.spring.validation.entity.User;
 import com.spring.validation.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
 	@Autowired
 	private UserService service;
 	@PostMapping("/signup")
-	public ResponseEntity<User> saveUser(@RequestBody UserRequest userRequest){
+	public ResponseEntity<User> saveUser(@RequestBody @Valid UserRequest userRequest){
 		return new ResponseEntity<>(service.saveUser(userRequest),HttpStatus.CREATED);
 	}
 	@GetMapping("/fetchAll")
@@ -31,7 +33,8 @@ public class UserController {
 		return ResponseEntity.ok(service.getAllUsers());
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Optional<User>> getUser(@PathVariable int id){
-		return ResponseEntity.ok(service.getUser(id));
+	public ResponseEntity<User> getUser(@PathVariable int id){
+		Optional<User> user=service.getUser(id);
+		return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 }
