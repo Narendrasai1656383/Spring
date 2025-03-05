@@ -1,7 +1,5 @@
 package com.spring.validation.dao;
 
-import org.hibernate.annotations.processing.Pattern;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -51,12 +49,12 @@ public class UserRequest {
 	private String name;
 	@Email(message="Invalid email address")
 	private String email;
-	@NotNull
+	@NotNull(message="Invalid mobile number")
 	@jakarta.validation.constraints.Pattern(regexp="^\\d{10}$",message="Invalid Mobile number")
 	private String mobile;
 	private String gender;
-	@Min(18)
-	@Max(60)
+	@Min(value=18,message = "Age must be at least 18")
+	@Max(value = 100, message = "Age must be at most 100")
 	private int age;
 	@NotBlank
 	private String nationality;
