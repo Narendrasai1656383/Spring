@@ -1,4 +1,4 @@
-package com.spring.validation.dao;
+package com.spring.validation.dto;
 
 import lombok.Data;
 

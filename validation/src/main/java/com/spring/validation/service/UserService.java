@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.validation.dao.UserRequest;
+import com.spring.validation.dto.UserRequest;
 import com.spring.validation.entity.Address;
 import com.spring.validation.entity.User;
 import com.spring.validation.exception.IdNotFoundException;

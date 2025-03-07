@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.validation.dao.UserRequest;
+import com.spring.validation.dto.UserRequest;
 import com.spring.validation.entity.User;
 import com.spring.validation.exception.IdNotFoundException;
 import com.spring.validation.exception.NotFoundAnyUserException;
