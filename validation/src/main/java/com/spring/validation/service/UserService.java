@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.validation.dao.UserRequest;
+import com.spring.validation.entity.Address;
 import com.spring.validation.entity.User;
 import com.spring.validation.exception.IdNotFoundException;
 import com.spring.validation.exception.NotFoundAnyUserException;
@@ -17,13 +18,20 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	public User saveUser(UserRequest userRequest) {
+		Address address=new Address(userRequest.getAddressRequest().getStreet(),
+				userRequest.getAddressRequest().getCity(),
+				userRequest.getAddressRequest().getState(),
+				userRequest.getAddressRequest().getPincode()
+				);
 		 User user = new User(0,
                  userRequest.getName(),
                  userRequest.getEmail(),
                  userRequest.getMobile(),
                  userRequest.getGender(),
                  userRequest.getAge(),
-                 userRequest.getNationality());
+                 userRequest.getNationality(),
+                 address
+                 );
 		 return repository.save(user);	
 	}
 	public List<User> getAllUsers() throws NotFoundAnyUserException{

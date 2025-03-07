@@ -1,5 +1,9 @@
 package com.spring.validation.entity;
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,4 +30,20 @@ public class User {
 	private String gender;
 	private int age;
 	private String nationality;
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(
+				name="street",column=@Column(name="user_street")
+				),
+		@AttributeOverride(
+				name="city",column=@Column(name="user_city")
+				),
+		@AttributeOverride(
+				name="state",column=@Column(name="user_state")
+				),
+		@AttributeOverride(
+				name="pincode",column=@Column(name="user_pincode")
+				)
+	})
+	private Address address;
 }

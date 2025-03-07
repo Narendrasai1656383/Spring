@@ -22,4 +22,5 @@ public class UserRequest {
 	private int age;
 	@NotBlank
 	private String nationality;
+	private AddressRequest addressRequest;
 }
