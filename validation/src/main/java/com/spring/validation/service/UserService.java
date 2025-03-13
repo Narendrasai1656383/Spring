@@ -48,4 +48,24 @@ public class UserService {
 		}
 		return user;
 	}
+	public User updateUser(int id, UserRequest userRequest) throws IdNotFoundException {
+		User user=repository.findById(id).orElseThrow(() -> new IdNotFoundException("Invalid User Id: "+id));
+		user.setName(userRequest.getName());
+		user.setEmail(userRequest.getEmail());
+		user.setMobile(userRequest.getMobile());
+		user.setGender(userRequest.getGender());
+		user.setAge(userRequest.getAge());
+		user.setNationality(userRequest.getNationality());
+		Address address=new Address(
+				userRequest.getAddressRequest().getStreet(),
+				userRequest.getAddressRequest().getCity(),
+				userRequest.getAddressRequest().getState(),
+				userRequest.getAddressRequest().getPincode()
+				);		
+		user.setAddress(address);
+		return repository.save(user);
+	}
+	public void deleteUser(int id) {
+		repository.deleteById(id);
+	}
 }
